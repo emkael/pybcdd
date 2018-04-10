@@ -1,0 +1,146 @@
+[Event ""]
+[Board "Example 1"]
+[Dealer "W"]
+[Vulnerable "None"]
+[Deal "N:K7.AK87.A87.AJ52 AJ5.QT9.9532.T76 QT62.J642.KJ6.K4 9843.53.QT4.Q983"]
+[OptimumResultTable "Declarer;Denomination\2R;Result\2R"]
+N C 10
+N D 10
+N H 11
+N S 10
+N NT 10
+E C 3
+E D 3
+E H 2
+E S 3
+E NT 2
+S C 10
+S D 10
+S H 11
+S S 10
+S NT 11
+W C 3
+W D 3
+W H 2
+W S 3
+W NT 2
+[Ability "N:AABAA E:23233 S:BABAA W:23233"]
+[OptimumScore "NS 460"]
+[Minimax "3NS460"]
+
+[Board "Example 2"]
+[Dealer "N"]
+[Vulnerable "EW"]
+[Deal "N:Q52.KQ974.AQ.AKT AKJ94.AT6.K8642. 86.J85.973.J9532 T73.32.JT5.Q8764"]
+[OptimumResultTable "Declarer;Denomination\2R;Result\2R"]
+N C 7
+N D 4
+N H 9
+N S 3
+N NT 8
+E C 6
+E D 9
+E H 4
+E S 10
+E NT 4
+S C 7
+S D 3
+S H 8
+S S 3
+S NT 3
+W C 6
+W D 9
+W H 4
+W S 10
+W NT 4
+[Ability "N:83947 E:4A496 S:33837 W:4A496"]
+[OptimumScore "NS -300"]
+[Minimax "4NDN-300"]
+
+[Board "Example 3"]
+[Dealer "W"]
+[Vulnerable "EW"]
+[Deal "N:Q.KT97.J953.9754 AKJT3.J3.T64.AQ2 87652.85.AK8.KJ6 94.AQ642.Q72.T83"]
+[OptimumResultTable "Declarer;Denomination\2R;Result\2R"]
+N C 7
+N D 6
+N H 5
+N S 4
+N NT 4
+E C 6
+E D 6
+E H 7
+E S 8
+E NT 9
+S C 6
+S D 7
+S H 5
+S S 4
+S NT 4
+W C 6
+W D 5
+W H 7
+W S 8
+W NT 8
+[Ability "N:44567 E:98766 S:44576 W:88756"]
+[OptimumScore "NS -500"]
+[Minimax "4CDN-500"]
+
+[Board "Example 4"]
+[Dealer "W"]
+[Vulnerable "None"]
+[Deal "N:J5.T872.KT76.K32 Q87642.9.84.Q754 A.AQJ63.QJ9532.J KT93.K54.A.AT986"]
+[OptimumResultTable "Declarer;Denomination\2R;Result\2R"]
+N C 3
+N D 9
+N H 10
+N S 3
+N NT 6
+E C 10
+E D 3
+E H 3
+E S 10
+E NT 6
+S C 3
+S D 10
+S H 10
+S S 3
+S NT 6
+W C 10
+W D 3
+W H 3
+W S 10
+W NT 6
+[Ability "N:63A93 E:6A33A S:63AA3 W:6A33A"]
+[OptimumScore "NS -100"]
+[Minimax "5DDS-100"]
+
+[Board "Example 5"]
+[Dealer "E"]
+[Vulnerable "EW"]
+[Deal "N:9865.Q98.AJT4.84 J4.KT76.Q98.J762 AT.543.762.QT953 KQ732.AJ2.K53.AK"]
+[OptimumResultTable "Declarer;Denomination\2R;Result\2R"]
+N C 5
+N D 3
+N H 3
+N S 3
+N NT 3
+E C 8
+E D 8
+E H 10
+E S 9
+E NT 9
+S C 5
+S D 3
+S H 3
+S S 3
+S NT 3
+W C 8
+W D 9
+W H 10
+W S 10
+W NT 10
+[Ability "N:33335 E:99A88 S:33335 W:AAA98"]
+[OptimumScore "NS -630"]
+[Minimax "3NW-630"]
+
