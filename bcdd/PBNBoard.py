@@ -74,7 +74,7 @@ class PBNBoard(object):
 
     def validate_ability(self, ability):
         matches = self.ability_pattern.match(ability)
-        if len(match) != 4:
+        if not matches:
             self._has_ability = False
             raise DDTableInvalidException('Invalid Ability line: ' + ability)
         players = []
