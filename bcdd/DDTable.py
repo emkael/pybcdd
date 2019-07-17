@@ -47,7 +47,7 @@ class DDTable(object):
                 error = self._wrapper.getLastError(solver)
                 if error:
                     raise DDTableInvalidException(
-                        'BCalc error: ' + str(c_char_p(error)))
+                        'BCalc error: %s' % (c_char_p(error).value.decode('ascii')))
         self._wrapper.delete(solver);
         return self._validate_table(result)
 

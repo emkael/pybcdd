@@ -50,7 +50,7 @@ def main():
                 except Exception as ex:
                     errors.append('[%s:%s] %s' % (filename, board_no, str(ex)))
                     print('ERROR: ' + str(ex))
-                    raise
+                    pbn_file.write_board(board)
             pbn_file.save()
         except DllNotFoundException as ex:
             errors.append("libbcalcdds library could not be loaded - make sure it's present in application directory!");
