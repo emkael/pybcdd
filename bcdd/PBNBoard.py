@@ -73,18 +73,18 @@ class PBNBoard(object):
         return self.get_field('Dealer')
 
     def validate_ability(self, ability):
-        matches = self.ability_pattern.match(ability)
-        if not matches:
+        matches = self.ability_pattern.findall(ability)
+        if not len(matches):
             self._has_ability = False
             raise DDTableInvalidException('Invalid Ability line: ' + ability)
         players = []
         for match in matches:
-            if match.group(1) in players:
+            if match[0] in players:
                 self._has_ability = False
                 raise DDTableInvalidException(
-                    'Duplicate entry in Ability: ' + match.group(0))
+                    'Duplicate entry in Ability: ' + match[0])
             else:
-                players.append(match.group(1))
+                players.append(match[1])
         self._has_ability = False
         return matches
 

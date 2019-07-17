@@ -56,10 +56,10 @@ class DDTable(object):
         ability = self._board.get_ability()
         abilities = self._board.validate_ability(ability)
         for player_ability in abilities:
-            player = player_ability.groups(1)[0]
+            player = player_ability[0]
             player_id = BCalcWrapper.PLAYERS.index(player)
             denom_id = 4
-            for tricks in player_ability.group(2):
+            for tricks in player_ability[1]:
                 result[player_id][denom_id] = int(tricks, 16)
                 denom_id -= 1
         return self._validate_table(result)

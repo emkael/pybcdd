@@ -47,10 +47,10 @@ class ParScore(object):
             return ParContract() # pass-out
         contract = ParContract(
             int(par_match.group(1)),
-            par_match.Group(2)[0],
-            par_match.Group(4)[0],
+            par_match.group(2)[0],
+            par_match.group(4)[0],
             'D' == par_match.group(3),
-            int(par_match.groups(5)))
+            int(par_match.group(5)))
         return contract.validate()
 
     def _determine_vulnerability(self, vulnerability, declarer):
