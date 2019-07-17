@@ -1,0 +1,11 @@
+% PBN 1.0
+[Generator "Big Deal version 1.2"]
+[Board "1"]
+[Dealer "N"]
+[Vulnerable "None"]
+[Deal "N:AJ9643.K98.62.83 QT5.JT7.AT74.AK5 87.AQ53.98.Q9742 K2.642.KQJ53.JT6"]
+
+[Board "2"]
+[Dealer "E"]
+[Vulnerable "NS"]
+[Deal "N:JT74..QJ2.832 62.52.876543.AQJ 9853.Q743.9.KT65 AKQ.KT86.AKT.974"]
