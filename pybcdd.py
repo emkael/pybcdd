@@ -64,7 +64,6 @@ def main():
         print('Following ERRORs occured:')
         for error in errors:
             print(error)
-        input('Press any key to continue...')
 
 if __name__ == '__main__':
     main()
