@@ -2,7 +2,7 @@
 Wrapper class for libbcalcDDS.dll
 '''
 
-from ctypes import cdll
+from ctypes import cdll, c_void_p
 
 from .Exceptions import DllNotFoundException
 
@@ -25,7 +25,12 @@ class BCalcWrapper(object):
 
     def __getattr__(self, attrname):
         def _dynamic_method(*args):
-            return getattr(self.libbcalcdds, 'bcalcDDS_' + attrname)(*args)
+            function = getattr(self.libbcalcdds, 'bcalcDDS_' + attrname)
+            if attrname == 'new':
+                function.restype = c_void_p
+            else:
+                function.argtypes = [c_void_p]
+            return function(*args)
         return _dynamic_method
 
     def declarerToLeader(self, player):
