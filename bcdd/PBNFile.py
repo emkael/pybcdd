@@ -28,7 +28,7 @@ class PBNFile(object):
     def write_board(self, board):
         if self.output_file is None:
             self.output_file = tempfile.NamedTemporaryFile(
-                mode='w', encoding='utf-8', delete=False)
+                mode='w', delete=False)
         for field in board.fields:
             self.output_file.write(field.raw_field + '\n')
         self.output_file.write('\n')
