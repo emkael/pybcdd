@@ -2,6 +2,7 @@
 Wrapper class for libbcalcDDS.dll
 '''
 
+import os
 from ctypes import cdll, c_void_p
 
 from .Exceptions import DllNotFoundException
@@ -13,11 +14,16 @@ class BCalcWrapper(object):
     PLAYERS = [ 'N', 'E', 'S', 'W' ]
 
     def __init__(self):
+        dllPath = os.path.join(
+            os.path.dirname(__file__),
+            '..')
         try:
-            self.libbcalcdds = cdll.LoadLibrary('./libbcalcdds.dll')
+            self.libbcalcdds = cdll.LoadLibrary(os.path.join(
+                dllPath, 'libbcalcdds.dll'))
         except OSError:
             try:
-                self.libbcalcdds = cdll.LoadLibrary('./libbcalcdds.so')
+                self.libbcalcdds = cdll.LoadLibrary(os.path.join(
+                    dllPath, 'libbcalcdds.so'))
             except OSError:
                 self.libbcalcdds = None
         if self.libbcalcdds is None:
