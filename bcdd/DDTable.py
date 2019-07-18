@@ -29,6 +29,12 @@ class DDTable(object):
         self._board = board;
         self._wrapper = BCalcWrapper()
 
+    def _check_for_error(self, solver):
+        error = self._wrapper.getLastError(solver)
+        if error:
+            raise DDTableInvalidException(
+                'BCalc error: %s' % (c_char_p(error).value.decode('ascii')))
+
     def get_bcalc_table(self):
         if not DDTable._banner_displayed:
             print('Double dummy analysis provided by BCalc.')
@@ -37,6 +43,7 @@ class DDTable(object):
         result = self._get_empty_table()
         deal = self._board.get_layout()
         solver = self._wrapper.new(b"PBN", deal.encode(), 0, 0)
+        self._check_for_error(solver)
         for denom in range(0, 5):
             self._wrapper.setTrumpAndReset(solver, denom)
             for player in range(0, 4):
@@ -44,10 +51,7 @@ class DDTable(object):
                 self._wrapper.setPlayerOnLeadAndReset(solver, leader)
                 result[player][denom] = 13 - self._wrapper.getTricksToTake(
                     solver)
-                error = self._wrapper.getLastError(solver)
-                if error:
-                    raise DDTableInvalidException(
-                        'BCalc error: %s' % (c_char_p(error).value.decode('ascii')))
+                self._check_for_error(solver)
         self._wrapper.delete(solver);
         return self._validate_table(result)
 

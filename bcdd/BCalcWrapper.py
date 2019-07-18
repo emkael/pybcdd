@@ -3,7 +3,7 @@ Wrapper class for libbcalcDDS.dll
 '''
 
 import os
-from ctypes import cdll, c_void_p
+from ctypes import cdll, c_char_p, c_void_p
 
 from .Exceptions import DllNotFoundException
 
@@ -35,6 +35,8 @@ class BCalcWrapper(object):
             if attrname == 'new':
                 function.restype = c_void_p
             else:
+                if attrname == 'getLastError':
+                    function.restype = c_char_p
                 function.argtypes = [c_void_p]
             return function(*args)
         return _dynamic_method
