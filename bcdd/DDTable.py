@@ -35,8 +35,8 @@ class DDTable(object):
             raise DDTableInvalidException(
                 'BCalc error: %s' % (c_char_p(error).value.decode('ascii')))
 
-    def get_bcalc_table(self):
-        if not DDTable._banner_displayed:
+    def get_bcalc_table(self, show_banner=True):
+        if not DDTable._banner_displayed and show_banner:
             print('Double dummy analysis provided by BCalc.')
             print('BCalc is awesome, check it out: http://bcalc.w8.pl')
             DDTable._banner_displayed = True
@@ -81,14 +81,14 @@ class DDTable(object):
             result[player_id][denom_id] = tricks
         return self._validate_table(result)
 
-    def get_dd_table(self):
+    def get_dd_table(self, show_banner=True):
         try:
             return self.get_jfr_table()
         except FieldNotFoundException:
             try:
                 return self.get_pbn_table()
             except FieldNotFoundException:
-                return self.get_bcalc_table()
+                return self.get_bcalc_table(show_banner)
 
     def print_table(self, dd_table):
         print('\t' + '\t'.join(BCalcWrapper.DENOMINATIONS))
