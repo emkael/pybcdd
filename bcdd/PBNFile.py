@@ -30,8 +30,8 @@ class PBNFile(object):
             self.output_file = tempfile.NamedTemporaryFile(
                 mode='w', delete=False)
         for field in board.fields:
-            self.output_file.write(field.raw_field + '\n')
-        self.output_file.write('\n')
+            self.output_file.write(field.raw_field + '\r\n')
+        self.output_file.write('\r\n')
 
     def save(self):
         if self.output_file is None:
