@@ -1,4 +1,4 @@
-(Polish README follows below.)
+(README po polsku poniżej / Polish README follows below.)
 
 pyBCDD - Python BCalc Double Dummy
 ==================================
