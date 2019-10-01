@@ -199,24 +199,25 @@ class PBNBoard(object):
                         'T' if BCalcWrapper.DENOMINATIONS[j] == 'N' else '',
                         dd_table[i][j])))
 
-    def save_par_contract(self, contract):
-        # we're not writing DDS custom fields, just parse them
-        self.delete_optimum_score()
-        self.write_optimum_score(contract)
+    def save_par_contract(self, contract, jfr_only=False):
+        if not jfr_only:
+            self.delete_optimum_score()
+            self.write_optimum_score(contract)
         self.delete_minimax()
         self.write_minimax(contract)
 
-    def save_dd_table(self, dd_table):
-        if self._has_optimum_result_table is None:
-            try:
-                optimum_result_table = self.validate_optimum_result_table(
-                    self.get_optimum_result_table())
-                self._has_optimum_result_table = True
-            except FieldNotFoundException:
-                self._has_optimum_result_table = False
-        if not self._has_optimum_result_table:
-            self.delete_optimum_result_table()
-            self.write_optimum_result_table(dd_table)
+    def save_dd_table(self, dd_table, jfr_only=False):
+        if not jfr_only:
+            if self._has_optimum_result_table is None:
+                try:
+                    optimum_result_table = self.validate_optimum_result_table(
+                        self.get_optimum_result_table())
+                    self._has_optimum_result_table = True
+                except FieldNotFoundException:
+                    self._has_optimum_result_table = False
+            if not self._has_optimum_result_table:
+                self.delete_optimum_result_table()
+                self.write_optimum_result_table(dd_table)
         if self._has_ability is None:
             try:
                 ability = self.validate_ability(

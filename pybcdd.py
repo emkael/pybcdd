@@ -7,15 +7,19 @@ from bcdd.Exceptions import DllNotFoundException, FieldNotFoundException
 from bcdd.PBNFile import PBNFile
 
 def get_files(args):
+    jfr_only = False
+    if '--jfr' in args:
+        jfr_only = True
+        args.remove('--jfr')
     filenames = [name for name in args
                  if os.path.exists(name)
                  and (os.path.realpath(name) != os.path.realpath(__file__))]
     if len(filenames) == 0:
         raise FileNotFoundError('No valid filepaths provided!')
-    return filenames
+    return filenames, jfr_only
 
 def main():
-    files = get_files(sys.argv)
+    files, jfr_only = get_files(sys.argv)
     errors = []
     for filename in files:
         try:
@@ -37,8 +41,8 @@ def main():
                         contract = par.get_par_contract(dd_table)
                         print(contract)
                         print('')
-                        board.save_dd_table(dd_table)
-                        board.save_par_contract(contract)
+                        board.save_dd_table(dd_table, jfr_only)
+                        board.save_par_contract(contract, jfr_only)
                         pbn_file.write_board(board)
                     else:
                         error = 'unable to determine DD table for board %s' \
