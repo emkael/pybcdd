@@ -1,7 +1,7 @@
 ﻿import re
 
 from .BCalcWrapper import BCalcWrapper
-from .Exceptions import FieldNotFoundException
+from .Exceptions import FieldNotFoundException, DDTableInvalidException
 
 
 class PBNField(object):
